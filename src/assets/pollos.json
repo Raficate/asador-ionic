@@ -1,0 +1,61 @@
+[
+  {
+    "nombre": "RAFAEL PEREZ",
+    "fecha": "18-05-23",
+    "hora": "14.00",
+    "pollo": 2,
+    "muslo": 0,
+    "pat": {
+      "gr": 2,
+      "md": 0,
+      "pq": 0
+    },
+    "patpim": {
+      "gr": 0,
+      "md": 0,
+      "pq": 0
+    },
+    "pim": {
+      "pq": 0,
+      "med": 0
+    },
+    "croq": {
+      "jamon": 7,
+      "pollo": 6,
+      "cocido": 0,
+      "bacalao": 0
+    },
+    "pagado": false,
+    "total": 46.7
+  },
+  {
+    "nombre": "IRENE HURTADO",
+    "fecha": "18-05-23",
+    "hora": "14.30",
+    "pollo": 1,
+    "medio": false,
+    "muslo": 5,
+    "pat": {
+      "gr": 0,
+      "md": 2,
+      "pq": 0
+    },
+    "patpim": {
+      "gr": 0,
+      "md": 1,
+      "pq": 0
+    },
+    "pim": {
+      "pq": 0,
+      "med": 0
+    },
+    "croq": {
+      "jamon": 0,
+      "pollo": 0,
+      "cocido": 10,
+      "bacalao": 0
+    },
+    "pagado": false,
+    "total": 26.0
+  }
+]

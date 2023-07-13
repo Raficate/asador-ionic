@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      ASADOR DE POLLOS VIRGEN DE LAS VIÑAS <img src="assets\images\logoasadormini.png" alt="logoasador" border="0"/>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <body>
+<div id="bg"></div>
+
+<form>
+  <div class="form-field">
+    <input type="email" placeholder="Email / Username" required/>
+  </div>
+  
+  <div class="form-field">
+    <input type="password" placeholder="Password" required/>                         
+  </div>
+  
+  <div class="form-field">
+    <button class="btn" type="submit" (click)="submitForm()">Log in</button>
+  </div>
+</form>
+</body>
+</ion-content>
+

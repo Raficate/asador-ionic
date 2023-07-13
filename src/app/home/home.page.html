@@ -1,0 +1,292 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      ASADOR DE POLLOS VIRGEN DE LAS VIÑAS <img src="assets\images\logoasadormini.png" alt="logoasador" border="0"/>
+    </ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4"> <ion-title>NUEVO PEDIDO</ion-title> </ion-col>
+        <ion-col size="2">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-select aria-label="hora" interface="popover" placeholder="Hour" [(ngModel)]="pedidoEditando.hora">
+                <ion-select-option value="12:00">12:00</ion-select-option>
+                <ion-select-option value="12.30">12.30</ion-select-option>
+                <ion-select-option value="13:00">13:00</ion-select-option>
+                <ion-select-option value="13:30">13:30</ion-select-option>
+                <ion-select-option value="14:00">14:00</ion-select-option>
+                <ion-select-option value="14:30">14:30</ion-select-option>
+                <ion-select-option value="15:00">15:00</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col size="2">
+          <ion-item lines="none">
+            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime presentation="date" [(ngModel)]="pedidoEditando.fecha" [preferWheel]="false" id="datetime"
+                  required></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4"> TOTAL: <ion-label> {{pedidoEditando.total}} €</ion-label></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>CLIENTE: </ion-label>
+            <ion-input [(ngModel)]="pedidoEditando.nombre" style="text-transform:uppercase;" required> </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    
+    
+    <ion-row>
+      <ion-col size="4"></ion-col>
+      <ion-col size="8">
+        <div class="polloscont">
+          <ion-row>
+            <ion-col size="11" float-left> POLLOS</ion-col>
+            <ion-col size="1">
+              <ion-button fill="solid" class="smallbutton" color="danger" (click)="borrarSeleccionPollos()">
+                <ion-icon slot="icon-only"name="close-outline"></ion-icon></ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
+              <ion-button fill="solid" class="bigbutton" color="light"><img src="assets\images\chicken.png" alt="buttonchicken" border="0" (click)="anadirPollo()"/></ion-button>
+            </ion-col>
+            <ion-col size="2">
+              <ion-button fill="solid" class="bigbutton" color="light"><img src="assets\images\halfchicken.png" alt="buttonhalfchicken" border="0" (click)="anadirMedioPollo()"/></ion-button>
+            </ion-col>
+            <ion-col size="1">
+              <ion-label> {{pedidoEditando.pollo}}</ion-label>
+            </ion-col>
+            <ion-col size="1">
+            </ion-col>
+            <ion-col size="2">
+              <ion-button fill="solid" class="bigbutton" color="light"><img src="assets\images\chickenthigh.png"
+                  alt="buttonhalfchicken" border="0" (click)="anadirMuslo()"/></ion-button>
+            </ion-col>
+            <ion-col size="1">
+              <ion-button fill="solid" class="smallbutton" color="light"  (click)="anadir5Muslos()">+5</ion-button>
+            </ion-col>
+            <ion-col size="1">
+              <ion-label> {{pedidoEditando.muslo}}</ion-label>
+            </ion-col>
+            <ion-col size="1">
+            </ion-col>
+            <ion-col size="1"></ion-col>
+          </ion-row>
+        </div>
+
+        <div class="patpimcontainer">
+          <ion-row>
+            <ion-col size="11" float-left> PATATAS Y PIMIENTOS</ion-col>
+            <ion-col size="1">
+              <ion-button fill="solid" class="smallbutton" color="danger" (click)="borrarSeleccionPatPim()">
+                <ion-icon slot="icon-only" name="close-outline"></ion-icon></ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
+              <ion-button fill="solid" color="light" class="mediumbutton" (click)="anadirPatGr()">
+                <img src="assets\images\patgr.png" alt="patgr" border="0" />
+              </ion-button>
+            </ion-col>
+            <ion-col size="1">
+              <ion-label>{{pat.gr}}</ion-label>
+            </ion-col>
+            <ion-col size="1"></ion-col>
+            <ion-col size="2">
+              <ion-button fill="solid" color="light" class="mediumbutton" (click)="anadirPatMd()">
+                <img src="assets\images\patmd.png" alt="patmd" border="0" />
+              </ion-button>
+            </ion-col>
+            <ion-col size="1">
+              <ion-label>{{pat.md}}</ion-label>
+            </ion-col>
+            <ion-col size="1"></ion-col>
+            <ion-col size="2">
+              <ion-button fill="solid" color="light" class="mediumbutton" (click)="anadirPatPq()">
+                <img src="assets\images\patpq.png" alt="patpq" border="0" />
+              </ion-button>
+            </ion-col>
+            <ion-col size="1">
+              <ion-label>{{pat.pq}}</ion-label>
+            </ion-col>
+            <ion-col size="1"></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
+              <ion-button fill="solid" color="light" class="mediumbutton" (click)="anadirPatPimGr()">
+                <img src="assets\images\patpimgr.png" alt="patpimgr" border="0" />
+              </ion-button>
+            </ion-col>
+            <ion-col size="1">
+              <ion-label>{{patpim.gr}}</ion-label>
+            </ion-col>
+            <ion-col size="1"></ion-col>
+            <ion-col size="2">
+              <ion-button fill="solid" color="light" class="mediumbutton" (click)="anadirPatPimMd()">
+                <img src="assets\images\patpimmd.png" alt="patpimmd" border="0" />
+              </ion-button>
+            </ion-col>
+            <ion-col size="1">
+              <ion-label>{{patpim.md}}</ion-label>
+            </ion-col>
+            <ion-col size="1"></ion-col>
+            <ion-col size="2">
+              <ion-button fill="solid" color="light" class="mediumbutton" (click)="anadirPatPimPq()">
+                <img src="assets\images\patpimpq.png" alt="patpimpq" border="0" />
+              </ion-button>
+            </ion-col>
+            <ion-col size="1">
+              <ion-label>{{patpim.pq}}</ion-label>
+            </ion-col>
+            <ion-col size="1"></ion-col>
+          </ion-row>
+        </div>
+
+
+        <ion-row>
+
+          <ion-col size="6">
+            <div class="croqcontainer">
+              <ion-row>
+                <ion-col size="10" float-left> CROQUETAS</ion-col>
+                <ion-col size="2">
+                  <ion-button class="smallbutton" color="danger" (click)="borrarSeleccionCroq()">
+                    <ion-icon slot="icon-only" name="close-outline"></ion-icon></ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-row>
+                    <ion-col size="8">
+                      <ion-button fill="solid" class="bigbutton" color="light" (click)="anadirCroqJamon()">
+                        <img src="assets\images\hamcroq.png" alt="hamcroq" border="0" /></ion-button>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-row>
+                        <ion-col><ion-button fill="solid" class="smallbutton" color="light" (click)="anadir5CroqJamon()">+5</ion-button>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-label>{{croq.jamon}}</ion-label>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-row>
+                    <ion-col size="8">
+                      <ion-button fill="solid" class="bigbutton" color="light" (click)="anadirCroqPollo()">
+                        <img src="assets\images\chickencroq.png" alt="chickencroq" border="0"  /></ion-button>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-row>
+                        <ion-col>
+                          <ion-button fill="solid" class="smallbutton" color="light" (click)="anadir5CroqPollo()">+5</ion-button>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-label>{{croq.pollo}}</ion-label>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                  <ion-row>
+                    <ion-col size="8">
+                      <ion-button fill="solid" class="bigbutton" color="light" (click)="anadirCroqCocido()">
+                        <img src="assets\images\cocidocroq.png" alt="cocidocroq" border="0"/></ion-button>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-row>
+                        <ion-col>
+                          <ion-button fill="solid" class="smallbutton" color="light" (click)="anadir5CroqCocido()">+5</ion-button>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-label>{{croq.cocido}}</ion-label>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-row>
+                    <ion-col size="8">
+                      <ion-button fill="solid" class="bigbutton" color="light" (click)="anadirCroqBacalao()">
+                        <img src="assets\images\fishcroq.png" alt="fishcroq" border="0" /></ion-button>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-row>
+                        <ion-col><ion-button fill="solid" class="smallbutton" color="light" (click)="anadir5CroqBacalao()">+5</ion-button></ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-label>{{croq.bacalao}}</ion-label>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="pimcontainer">
+              <ion-row>
+                <ion-col size="10" float-left> PIMIENTOS</ion-col>
+                <ion-col size="2">
+                  <ion-button class="smallbutton" color="danger" (click)="borrarSeleccionPim()">
+                    <ion-icon slot="icon-only" name="close-outline"></ion-icon></ion-button>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="4">
+                  <ion-button fill="solid" color="light" class="mediumbutton" (click)="anadirPimPq()">
+                    <img src="assets\images\pim.png" alt="pim" border="0" />
+                  </ion-button>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-label>{{pim.md}}</ion-label>
+                </ion-col>
+
+                <ion-col size="4">
+                  <ion-button fill="solid" color="light" class="mediumbutton" (click)="anadirPimGr()">
+                    <img src="assets\images\pimband.png" alt="pimband" border="0" />
+                  </ion-button>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-label>{{pim.gr}}</ion-label>
+                </ion-col>
+              </ion-row>
+            </div>
+
+            <ion-row>
+              <ion-button expand="block" size="large" color="success"
+                (click)="clicBotonInsertar()">Confirmar</ion-button>
+            </ion-row>
+
+          </ion-col>
+        </ion-row>
+
+
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
