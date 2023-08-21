@@ -13,5 +13,10 @@ export class FirestoneService {
     return this.angularFirestore.collection(coleccion).add(datos);
   } 
 
+  public consultar(coleccion: any) {
+    console.log(this.angularFirestore.collection(coleccion).snapshotChanges() )
+    return this.angularFirestore.collection(coleccion).snapshotChanges();
+  }
+
 }
 
